@@ -1,0 +1,11 @@
+.app {
+  position: relative;
+  /* Alte stiluri specifice pentru containerul principal */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Alte stiluri specifice pentru componenta suprapusă */
+}
