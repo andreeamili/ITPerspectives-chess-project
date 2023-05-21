@@ -7,6 +7,8 @@ import king from './picesPictures/king.png'
 import qween from './picesPictures/qween.png'
 import bishop from './picesPictures/bishop.png'
 import invisible from './picesPictures/invisible-block.png'
+import Draggable from "react-draggable";
+
 
 function ChessPieces() {
     
@@ -41,75 +43,63 @@ function ChessPieces() {
         { id: 7, src: invisible, alt: "pawn" },
         { id: 8, src: invisible, alt: "pawn" },
     ];
-    const spaces = Array.from(Array(4).keys());
-    const [whitePawnPositions, setWhitePawnPositions] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
-    function moveWhitePawn(index) {
-        setWhitePawnPositions(prevPositions => {
-          const newPositions = [...prevPositions];
-          newPositions[index] += 1; // Muta pionul cu o casetă înainte
-          return newPositions;
-        });
-      }
+    const spaces = Array.from(Array(5).keys());
     return (
         <div className="chess-pieces">
             {imagesLineOne.map((image) => (
+                <Draggable>
                 <img
                     key={image.id}
                     src={image.src}
                     alt={image.alt}
                     style={{ width: "3.5em", height: "3.5em", boxsizing: "border-box", marginLeft: "1.3%", marginRight: "1.3%" }}
-                />
+                /></Draggable>
             ))}
             {imagesLineTwo.map((image,index) => (
+                <Draggable>
                 <img
                     key={image.id}
                     src={image.src}
                     alt={image.alt}
                     style={{ width: "3.5em", height: "3.5em", boxsizing: "border-box", margin: "1.3%" }}
-                    onClick={() => moveWhitePawn(index)}
-                />
+                /></Draggable>
             ))}
-            {whitePawnPositions.map((position) => (
-        <img
-          key={position}
-          src={invisible}
-          alt="pawn"
-          style={{ width: "3.5em", height: "3.5em", boxSizing: "border-box", marginLeft: "1.3%", marginRight: "1.3%" }}
-        />
-      ))}
-
             {
                 spaces.map(() => (
                     <>
                         {imagesSpace.map((image) => (
+                            <Draggable>
                 <img
                     key={image.id}
                     src={image.src}
                     alt={image.alt}
                     style={{ width: "3.5em", height: "3.5em", boxsizing: "border-box", marginLeft: "1.3%", marginRight: "1.3%" }}
-                />
+                /></Draggable>
             ))}
                     </>
                 ))}
 
             {imagesLineTwo.map((image) => (
+                <Draggable>
                 <img
                     key={image.id}
                     src={image.src}
                     alt={image.alt}
                     style={{ width: "3.5em", height: "3.5em", boxsizing: "border-box",margin: "1.3%" ,filter: "invert(100%)" }}
-                />
+                /></Draggable>
             ))}
             {imagesLineOne.map((image) => (
+                <Draggable>
                 <img
                     key={image.id}
                     src={image.src}
                     alt={image.alt}
                     style={{ width: "3.5em", height: "3.5em", boxsizing: "border-box", marginLeft: "1.3%", marginRight: "1.3%",filter: "invert(100%)" }}
-                />
+                /></Draggable>
             ))}
 
         </div>
     );
 }
 export default ChessPieces
+
